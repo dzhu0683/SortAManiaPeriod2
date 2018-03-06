@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Team9SortCompetition extends SortCompetition{
+public class Team9SortCompetition extends SortCompetition {
 
 	public int challengeOne(int[] arr) {
 		int median = 0;
@@ -154,8 +154,8 @@ public class Team9SortCompetition extends SortCompetition{
 		//two arrays left and right since merge sort is splitting up arrays by half then combining it back together sorted
 		//left is 0 to to 1/2
 		//right is 1/2 to end
-		Comparable[] left = Arrays.copyOfRange(list, 0, list.length/2);
-		Comparable[] right = Arrays.copyOfRange(list, list.length/2 , list.length); 
+		Comparable[] left = (Comparable[]) Arrays.copyOfRange(list, 0, list.length/2);
+		Comparable[] right = (Comparable[]) Arrays.copyOfRange(list, list.length/2 , list.length); 
 		return(merge1(mergeSort1(left), mergeSort1(right)));
 		
 	}
