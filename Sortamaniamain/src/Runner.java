@@ -111,7 +111,7 @@ public class Runner {
 		Team9SortCompetition x = new Team9SortCompetition();
 		
 
-
+		System.out.println(Arrays.toString(randArr));
 		long start = System.nanoTime();
 		long end = System.nanoTime();
 		long time = end - start;

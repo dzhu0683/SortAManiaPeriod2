@@ -5,7 +5,7 @@ public class Team9SortCompetition extends SortCompetition {
 	public int challengeOne(int[] arr) {
 		int median = 0;
 		int[] arr1 = arr;
-		quickSort(arr1, 0, arr1.length-1);
+		countingSort(arr1);
 		if (arr1.length % 2 == 0) {
 		    median = (arr1[arr1.length/2] + (arr1[arr1.length/2 - 1]))/2;
 		}
@@ -63,10 +63,12 @@ public class Team9SortCompetition extends SortCompetition {
 		return median;
 	}
 	
+	
+	//merge sort doesnt work for comparable
 	@Override
 	public int challengeFive(Comparable[] arr, Comparable query) {
 		int y = 0;
-		mergeSort1(arr);
+		bubbleSort(arr);
 		for(int i =0; i < arr.length; i++) {
 			if(arr[i].equals(query)) {
 				y= i;
@@ -84,6 +86,11 @@ public class Team9SortCompetition extends SortCompetition {
 		return null;
 	}
 	
+	
+	//http://www.cs.uml.edu/~pkien/sorting/
+	
+	
+	//helper/sorting methods below
 	
 	
 	public static void swap(int []arr, int index1, int index2) {
@@ -115,6 +122,8 @@ public class Team9SortCompetition extends SortCompetition {
 				}
 			}
 		}
+	
+	
 	public static void bubbleSort(String [] list1) {
 		boolean swap = true;
 		while(swap) { //while loop is used as there is a limited number of loops before everything gets sorted
@@ -154,8 +163,9 @@ public class Team9SortCompetition extends SortCompetition {
 		//two arrays left and right since merge sort is splitting up arrays by half then combining it back together sorted
 		//left is 0 to to 1/2
 		//right is 1/2 to end
-		Comparable[] left = (Comparable[]) Arrays.copyOfRange(list, 0, list.length/2);
-		Comparable[] right = (Comparable[]) Arrays.copyOfRange(list, list.length/2 , list.length); 
+		Comparable[] left = Arrays.copyOfRange(list, 0, list.length/2);
+		Comparable[] right = Arrays.copyOfRange(list, list.length/2 , list.length); 
+		
 		return(merge1(mergeSort1(left), mergeSort1(right)));
 		
 	}
@@ -249,6 +259,31 @@ public class Team9SortCompetition extends SortCompetition {
 			    return combinedArray; //returns the merged sorted array 
 		}
 	
+	 public static void countingSort(int[] arr1)
+	    {
+	        int n = arr1.length;
+	
+	        char output[] = new char[n];
+	 
+	        int count[] = new int[256];
+	        for (int i=0; i<256; ++i)
+	            count[i] = 0;
+	 
+	        for (int i=0; i<n; ++i)
+	            ++count[arr1[i]];
+	 
+	        for (int i=1; i<=255; ++i)
+	            count[i] += count[i-1];
+	
+	        for (int i = 0; i<n; ++i)
+	        {
+	            output[count[arr1[i]]-1] = (char) arr1[i];
+	            --count[arr1[i]];
+	        }
+	 
+	        for (int i = 0; i<n; ++i)
+	            arr1[i] = output[i];
+	    }
 	public static void bubbleSwap(Comparable[] list1, int index1, int index2) {
 		String temp = (String) list1[index1];
 		list1[index1] = list1[index2];
