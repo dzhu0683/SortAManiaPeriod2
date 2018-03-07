@@ -52,10 +52,11 @@ public class Team9SortCompetition extends SortCompetition {
 		int [] x = new int [arr.length];
 		for(int i=0; i < arr[0].length; i++) {
 			median = challengeOne(arr[i]);
-			for(int j=0; j < median; j++) {
-				median = challengeOne(arr[j]);	
 			}
+		for(int j=0; j < median; j++) {
+			median = challengeOne(arr[median]);
 		}
+		
 		
 		
 		
@@ -82,7 +83,7 @@ public class Team9SortCompetition extends SortCompetition {
 	@Override
 	public String greeting() {
 		
-		return null;
+		return "Hello we are Team 9.";
 	}
 	
 	
