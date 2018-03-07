@@ -48,11 +48,10 @@ public class Team9SortCompetition extends SortCompetition {
 	public int challengeFour(int[][] arr) {
 		int median = 0;
 		int a= 0;
-	
 		int [] x = new int [arr.length];
 		for(int i=0; i < arr[0].length; i++) {
-			challengeOne(arr[i]);
-			for(int j=0; j < arr[i].length; j++) {
+			median = challengeOne(arr[i]);
+			for(int j=0; j < median; j++) {
 				median = challengeOne(arr[j]);	
 			}
 		}
