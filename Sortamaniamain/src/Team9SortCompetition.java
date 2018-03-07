@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /*
@@ -18,7 +19,7 @@ public class Team9SortCompetition extends SortCompetition {
 	public int challengeOne(int[] arr) {
 		int median = 0;
 		int[] arr1 = arr;
-		countingSort(arr1);
+		countingSort(arr1, median);
 		if (arr1.length % 2 == 0) {
 		    median = (arr1[arr1.length/2] + (arr1[arr1.length/2 - 1]))/2;
 		}
@@ -72,18 +73,36 @@ public class Team9SortCompetition extends SortCompetition {
 	 * returns median of median array 
 	 * new array is created to store the medians of the arrays, which are sorted through challenge one
 	 * then that new array is sorted
+	 * ;_;
 	 */
-	public int challengeFour(int[][] arr) {
-		int median = 0;
-		int[] medianArrays = new int [arr[0].length];
-		for(int a=0; a < arr.length; a++) {
-			medianArrays[a] =  challengeOne(arr[a]);
+	public int challengeFour(int[][] arr) 
+	{
+		int [] median = new int [arr.length];
+		
+		for(int i = 0; i < arr.length; i++) 
+		{
+			countingSort(arr[i],10000);
+			median [i] = medfind(arr[i]);
 		}
-			median = challengeOne(medianArrays);
-		return median;
+		
+		countingSort(median,10000);
+		return medfind(median);
 	}
 	
 	
+	
+	public static int medfind(int [] arr)
+	{
+		int ans;
+		if(arr.length%2==0)
+		{
+			ans = ((arr[(arr.length/2) - 1] + arr[(arr.length/2)])/2) ; 
+		}
+		else
+			ans = arr[(arr.length/2)];
+		return ans;
+	}
+
 	//merge sort doesnt work for comparable
 	@Override
 	/*
@@ -309,7 +328,7 @@ public class Team9SortCompetition extends SortCompetition {
 		
 	}
 
-	public static void countingSort(int[] arr1)
+	public static void countingSort(int[] arr1, int j)
 	    {
 	        int n = arr1.length;
 	
