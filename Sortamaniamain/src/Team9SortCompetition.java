@@ -29,7 +29,8 @@ public class Team9SortCompetition extends SortCompetition {
 		}
 		return  -1;
 	}
-
+	
+	
 	@Override
 	public int challengeThree(int[] arr) {
 		int median = 0;
