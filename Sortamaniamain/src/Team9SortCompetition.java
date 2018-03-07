@@ -1,7 +1,20 @@
 import java.util.Arrays;
 
+/*
+ * Team 9
+ * Period 2 AP Computer Science 
+ * 3/7/18
+ * Group members: Dustin, Evan, Darren, Kewu 
+ *
+ */
+
 public class Team9SortCompetition extends SortCompetition {
 
+	/*
+	 * Challenge one
+	 * array is sorted and median is returned
+	 * 
+	 */
 	public int challengeOne(int[] arr) {
 		int median = 0;
 		int[] arr1 = arr;
@@ -16,6 +29,12 @@ public class Team9SortCompetition extends SortCompetition {
 	}
 
 	@Override
+	/*
+	 * Challenge two
+	 * array is sorted and the query is searched for
+	 * if an index equals the query, then it returns the index position
+	 * else -1 is returned
+	 */
 	public int challengeTwo(String[] arr, String query) {
 		String[] arr1 = arr;
 		String x = query;
@@ -30,7 +49,10 @@ public class Team9SortCompetition extends SortCompetition {
 		return  -1;
 	}
 	
-	
+	/*Challenge three
+	 * same as challenge one
+	 * 
+	 */
 	@Override
 	public int challengeThree(int[] arr) {
 		int median = 0;
@@ -46,26 +68,29 @@ public class Team9SortCompetition extends SortCompetition {
 	}
 
 	@Override
+	/* Challenge four
+	 * returns median of median array 
+	 * new array is created to store the medians of the arrays, which are sorted through challenge one
+	 * then that new array is sorted
+	 */
 	public int challengeFour(int[][] arr) {
 		int median = 0;
-		int a= 0;
-		int [] x = new int [arr.length];
-		for(int i=0; i < arr[0].length; i++) {
-			median = challengeOne(arr[i]);
-			}
-		for(int j=0; j < median; j++) {
-			median = challengeOne(arr[median]);
+		int[] medianArrays = new int [arr[0].length];
+		for(int a=0; a < arr.length; a++) {
+			medianArrays[a] =  challengeOne(arr[a]);
 		}
-		
-		
-		
-		
+			median = challengeOne(medianArrays);
 		return median;
 	}
 	
 	
 	//merge sort doesnt work for comparable
 	@Override
+	/*
+	 * Challenge five
+	 * same as challenge two but with comparable
+	 * 
+	 */
 	public int challengeFive(Comparable[] arr, Comparable query) {
 		int y = 0;
 		selectionSort(arr);
@@ -87,11 +112,11 @@ public class Team9SortCompetition extends SortCompetition {
 	}
 	
 	
+	
+	
+	// helper/sorting methods below (some are not used)
+	
 	//http://www.cs.uml.edu/~pkien/sorting/
-	
-	
-	//helper/sorting methods below
-	
 	
 	public static void swap(int []arr, int index1, int index2) {
 		int temp = arr[index1];
