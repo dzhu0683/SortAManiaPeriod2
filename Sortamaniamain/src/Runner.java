@@ -96,7 +96,7 @@ public class Runner {
 		String [] randStrings = randomStrings(9);
 		int [] randArr2 = mostlySortedInts(9);
 		int [][] randArr3 = randMulti(5);
-		String [] randStrings2 = {"abbcd", "bchdasjs", "iorererr", "yzjjzz", "xirire", "mcmmcncn"};
+		String [] randStrings2 = {"abbcd", "bchdasjs", "iorererr", "k", "yzjjzz", "xirire", "mcmmcncn"};
 		
 		
 		
@@ -158,6 +158,6 @@ public class Runner {
 		x.challengeFive(randStrings2, "yirire");
 		System.out.println("Challenge five took: " + time + " nanoseconds");
 		System.out.println(Arrays.toString(randStrings2));
-		System.out.println(x.challengeFive(randStrings2, "yzjjzz"));
+		System.out.println(x.challengeFive(randStrings2, "mcmmcncn"));
 }
 }

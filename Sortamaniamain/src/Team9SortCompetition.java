@@ -50,8 +50,7 @@ public class Team9SortCompetition extends SortCompetition {
 		int a= 0;
 	
 		int [] x = new int [arr.length];
-		
-		for(int i=0; i < arr.length; i++) {
+		for(int i=0; i < arr[0].length; i++) {
 			challengeOne(arr[i]);
 			for(int j=0; j < arr[i].length; j++) {
 				median = challengeOne(arr[j]);	
@@ -68,7 +67,7 @@ public class Team9SortCompetition extends SortCompetition {
 	@Override
 	public int challengeFive(Comparable[] arr, Comparable query) {
 		int y = 0;
-		bubbleSort(arr);
+		selectionSort(arr);
 		for(int i =0; i < arr.length; i++) {
 			if(arr[i].equals(query)) {
 				y= i;
@@ -259,7 +258,32 @@ public class Team9SortCompetition extends SortCompetition {
 			    return combinedArray; //returns the merged sorted array 
 		}
 	
-	 public static void countingSort(int[] arr1)
+	public static void selectionSort(Comparable [] arr) {
+		int x =0;
+		Object temp;
+		for (int i=0; i < arr.length-1; i++) {
+			x =i;
+			for(int j = i+1; j < arr.length; j++) {
+				if(arr[j].compareTo(arr[x])<0)
+					x = j;
+			}
+			if(i!=x) {
+				swap(arr, x, i);
+			}
+
+		}
+		
+		
+	}
+	
+	 private static void swap(Comparable[] list1, int index1, int index2) {
+		 String temp = (String) list1[index1];
+			list1[index1] = list1[index2];
+			list1[index2] = temp;
+		
+	}
+
+	public static void countingSort(int[] arr1)
 	    {
 	        int n = arr1.length;
 	
