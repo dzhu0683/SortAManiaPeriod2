@@ -88,7 +88,7 @@ public class Team9SortCompetition extends SortCompetition {
 	 * 
 	 */
 	public int challengeFive(Comparable[] arr, Comparable query) {
-		selectionSort(arr);
+		//selectionSort(arr); Does not need to be sorted
 		for(int i =0; i < arr.length; i++) {
 			if(arr[i].equals(query)) {
 				return i;
