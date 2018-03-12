@@ -17,7 +17,7 @@ public class Team9SortCompetition extends SortCompetition {
 	 */
 	public int challengeOne(int[] arr) {
 		int median;
-		quickSort(arr, 0, arr.length-1);
+		insertionSort(arr);
 		if (arr.length % 2 == 0) {
 		    median = (arr[(arr.length/2)] + (arr[(arr.length/2) - 1]))/2;
 		}
@@ -35,7 +35,7 @@ public class Team9SortCompetition extends SortCompetition {
 	 * else -1 is returned
 	 */
 	public int challengeTwo(String[] arr, String query) {
-		mergeSort(arr);
+		bubbleSort(arr);
 		for(int i =0; i < arr.length; i++) {
 			if(arr[i].equals(query)) {
 				return i;
@@ -51,7 +51,7 @@ public class Team9SortCompetition extends SortCompetition {
 	@Override
 	public int challengeThree(int[] arr) {
 		int median = 0;
-		quickSort(arr, 0, arr.length-1);
+		insertionSort(arr);
 		if (arr.length % 2 == 0) {
 		    median = (arr[(arr.length/2)] + (arr[arr.length/2 - 1]))/2;
 		}
@@ -68,13 +68,15 @@ public class Team9SortCompetition extends SortCompetition {
 	 * then that new array is sorted
 	 */
 	public int challengeFour(int[][] arr) {
-		int median = 0;
-		int[] medianArrays = new int [arr.length];
-		for(int a=0; a < arr.length; a++) {
-			medianArrays[a] =  challengeOne(arr[a]);
+		int [] median = new int [arr.length];
+		int med;
+		for(int i = 0; i < arr.length; i++) 
+		{
+			median[i] = challengeOne(arr[i]);
 		}
-			median = challengeOne(medianArrays);
-		return median;
+		
+		med = challengeOne(median);
+		return med;
 	}
 	
 	
@@ -106,9 +108,35 @@ public class Team9SortCompetition extends SortCompetition {
 	
 	
 	
+	
 	// helper/sorting methods below (some are not used)
 	
 	//http://www.cs.uml.edu/~pkien/sorting/
+	
+	public static void insertionSort(int [] list1) {
+		for(int i = 0; i < list1.length-1; i++) { //outer loop looking for an array smaller than the initial array
+		//i is the value being sorted up the array
+			for(int j= i+1 ; j  > 0 ; j--) { //j is the right value , j-1 is i
+				//j counts down
+				//j cant be less than or equal to zero as negative numbers return error
+				if(list1[j] < list1[j-1]) { //if right value is less than value being sorted, they swap
+					swap(list1,  j, j-1);
+					}
+				}
+			}
+		}
+	
+	public static int medfind(int [] arr)
+	{
+		int ans;
+		if(arr.length%2==0)
+		{
+			ans = ((arr[(arr.length/2) - 1] + arr[(arr.length/2)])/2) ; 
+		}
+		else
+			ans = arr[(arr.length/2)];
+		return ans;
+	}
 	
 	public static void swap(int []arr, int index1, int index2) {
 		int temp = arr[index1];
