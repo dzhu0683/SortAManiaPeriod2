@@ -84,13 +84,13 @@ public class Team9SortCompetition extends SortCompetition {
 	@Override
 	/*
 	 * Challenge five
-	 * same as challenge two but with comparable
+	 * compareTo
 	 * 
 	 */
 	public int challengeFive(Comparable[] arr, Comparable query) {
 		//selectionSort(arr); Does not need to be sorted
 		for(int i =0; i < arr.length; i++) {
-			if(arr[i].equals(query)) {
+			if(arr[i].compareTo(query) == 0) {
 				return i;
 			}
 		}
